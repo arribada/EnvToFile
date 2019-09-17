@@ -21,7 +21,7 @@ func main() {
 	`)
 	app.HelpFlag.Short('h')
 	dest := app.Flag("dir", "destination to which it should write the files").
-		Short('d').ExistingDir()
+		Short('d').Required().ExistingDir()
 	kingpin.MustParse(app.Parse(os.Args[1:]))
 
 	for _, env := range os.Environ() {
@@ -33,7 +33,7 @@ func main() {
 		}
 		log.Printf("wrote env var:%v to:%v \n", d[0], destPath)
 		if os.Getenv("DEBUG") != "" {
-			log.Printf("env contenc:%v\n", d[1])
+			log.Printf("env content:%v\n", d[1])
 		}
 	}
 	exitSignal := make(chan os.Signal)
