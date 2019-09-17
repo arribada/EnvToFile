@@ -32,6 +32,9 @@ func main() {
 			log.Printf("could not write env var:%v to:%v \n", d[0], destPath)
 		}
 		log.Printf("wrote env var:%v to:%v \n", d[0], destPath)
+		if os.Getenv("DEBUG") != "" {
+			log.Printf("env contenc:%v\n", d[1])
+		}
 	}
 	exitSignal := make(chan os.Signal)
 	signal.Notify(exitSignal, syscall.SIGINT, syscall.SIGTERM)
