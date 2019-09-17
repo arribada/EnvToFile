@@ -1,14 +1,13 @@
 version: "2.1"
 
 services:
-  configs:
+  env-config:
     image: arribada/env-config
     environment:
-      - |
-      PROMETHEUS_CONFIG=
-      global:
-          scrape_interval:     1s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
-          evaluation_interval: 1s
+      PROMETHEUS_CONFIG: |-
+        global:
+            scrape_interval:     1s
+            evaluation_interval: 1s
     volumes:
     - configs:/configs/
     command:
@@ -17,11 +16,10 @@ services:
   prometheus:
     image: prom/prometheus
     volumes:
-    - configs:/etc/
+    - configs:/configs/
     ports:
       - 9090:9090
     command:
       - --config.file=/configs/PROMETHEUS_CONFIG
-
 volumes:
   configs:
