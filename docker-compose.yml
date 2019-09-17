@@ -9,16 +9,16 @@ services:
             scrape_interval:     1s
             evaluation_interval: 1s
     volumes:
-    - configs:/configs/
+      - configs:/configs/
     command:
-        - --dir=/configs/
+      - --dir=/configs/
   
   prometheus:
     image: prom/prometheus
     depends_on:
       - env-config
     volumes:
-    - configs:/configs/
+      - configs:/configs/
     ports:
       - 9090:9090
     command:
