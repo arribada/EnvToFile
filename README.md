@@ -3,3 +3,9 @@ Useful in environments where the only way to add configuratios is through env va
 need to use docker images which accept configs only through files.
 
 See the docker-compose file for a full example.
+
+
+To write all current env variable and a custom `CONFIG` variable in the current dir:
+```
+CONFIG="var=1" go run main.go --dir=./
+```
