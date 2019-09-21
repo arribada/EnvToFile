@@ -25,7 +25,7 @@ func main() {
 	kingpin.MustParse(app.Parse(os.Args[1:]))
 
 	for _, env := range os.Environ() {
-		d := strings.Split(env, "=")
+		d := strings.SplitN(env, "=", 2)
 		destPath := filepath.Join(*dest, d[0])
 		err := ioutil.WriteFile(destPath, []byte(d[1]), 0644)
 		if err != nil {

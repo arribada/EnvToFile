@@ -4,6 +4,7 @@ services:
   env-config:
     image: arribada/env-config
     environment:
+      DEBUG: 1
       PROMETHEUS_CONFIG: |-
         global:
             scrape_interval:     1s
