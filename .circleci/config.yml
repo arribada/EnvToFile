@@ -8,7 +8,7 @@ jobs:
     steps:
       - checkout  
       - docker/publish:
-          containerName:env-config
+          containerName: env-config
           
 workflows:
   version: 2
