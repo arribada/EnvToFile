@@ -7,14 +7,14 @@ workflows:
   version: 2
   publish:
     jobs:
-      - docker/publish:
-          executor: arribada/ubuntu
-          containerName: env-config
-          context: org-context
-          filters:
-            branches:
-                only: 
-                  - master
+      executor: arribada/ubuntu
+      docker/publish:
+        containerName: env-config
+        context: org-context
+        filters:
+          branches:
+              only: 
+                - master
             #   ignore: /.*/
             # tags:
             #   only: /v\d+\.\d+\.\d+$/
