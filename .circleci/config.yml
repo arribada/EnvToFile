@@ -8,7 +8,7 @@ workflows:
   publish:
     jobs:
       - docker/publish:
-          executor: arribada/docker
+          executor: arribada/ubuntu
           containerName: env-config
           context: org-context
           filters:
