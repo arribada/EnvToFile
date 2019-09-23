@@ -27,7 +27,8 @@ func main() {
 	for _, env := range os.Environ() {
 		d := strings.SplitN(env, "=", 2)
 		destPath := filepath.Join(*dest, d[0])
-		err := ioutil.WriteFile(destPath, []byte(d[1]), 0644)
+		expanded := os.ExpandEnv(d[1])
+		err := ioutil.WriteFile(destPath, []byte(expanded), 0644)
 		if err != nil {
 			log.Printf("could not write env var:%v to:%v \n", d[0], destPath)
 		}
