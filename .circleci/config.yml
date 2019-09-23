@@ -1,20 +1,14 @@
-orbs:
-  docker: arribada/docker@0.0.4
 version: 2.1
-jobs:
-  docker_publish:
-    machine:
-      image: ubuntu-1604:201903-01
-    steps:
-      - checkout  
-      - docker/publish:
-          containerName: env-config
-          
+
+orbs:
+  docker: arribada/docker@0.0.7
+
 workflows:
   version: 2
   publish:
     jobs:
-      - docker_publish:
+      - docker/publish:
+          containerName: env-config
           context: org-context
           filters:
             branches:
