@@ -2,9 +2,7 @@ version: 2.1
 
 orbs:
   docker: arribada/docker@0.0.9
-
 workflows:
-  version: 2
   publish:
     jobs:
       - docker/publish:
