@@ -21,7 +21,6 @@ orbs:
 version: 2.1
 jobs:
   docker_publish:
-    context: org-context
     machine:
       image: ubuntu-1604:201903-01
     steps:
@@ -33,6 +32,7 @@ workflows:
   publish:
     jobs:
       - docker_publish:
+          context: org-context
           filters:
             branches:
                 only: 
