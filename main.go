@@ -13,6 +13,11 @@ import (
 )
 
 func main() {
+	// TODO remove once balena supports dots in the env variables
+	for _, pair := range os.Environ() {
+		d := strings.SplitN(pair, "=", 2)
+		os.Setenv(strings.ReplaceAll(strings.ReplaceAll(d[0], "_", "."), "..", "_"), d[1])
+	}
 	log.SetFlags(log.Ltime | log.Lshortfile)
 	app := kingpin.New(filepath.Base(os.Args[0]), `
 	A simple tool that reads all env variables and writes each one to a file.

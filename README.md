@@ -7,5 +7,5 @@ See the docker-compose file for a full example.
 
 To write all current env variable and a custom `CONFIG` variable in the current dir:
 ```
-CONFIG="var=1" go run main.go --dir=./
+VALUE=val CONFIG="var=$VALUE" go run main.go --dir=./
 ```
