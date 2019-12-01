@@ -26,8 +26,13 @@ func main() {
 
 	for _, env := range os.Environ() {
 		d := strings.SplitN(env, "=", 2)
+		// Any underscore in a variable with a special suffix should be converted into a dot.
+		if strings.HasSuffix(d[0], "_sh") {
+			d[0] = strings.TrimSuffix(d[0], "_sh") + ".sh"
+		}
 		destPath := filepath.Join(*dest, d[0])
 		expanded := os.ExpandEnv(d[1])
+
 		err := ioutil.WriteFile(destPath, []byte(expanded), 0644)
 		if err != nil {
 			log.Printf("could not write env var:%v to:%v \n", d[0], destPath)
