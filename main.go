@@ -27,7 +27,7 @@ func main() {
 	for _, env := range os.Environ() {
 		d := strings.SplitN(env, "=", 2)
 		// Any underscore in a variable with a special suffix should be converted into a dot.
-		sfxs := []string{"_sh", "_xml"}
+		sfxs := []string{"_sh", "_xml", "_conf"}
 		for _, sfx := range sfxs {
 			if strings.HasSuffix(d[0], sfx) {
 				d[0] = strings.TrimSuffix(d[0], sfx) + strings.Replace(sfx, "_", ".", 1)
